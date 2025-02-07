@@ -1,4 +1,4 @@
-# missing import statements should be added here
+import wikipedia
 
 from images import get_wikipedia_page_thumbnail_url, download_image_from_url
 
@@ -10,7 +10,21 @@ def prompt_for_image():
     """
     search_query = input("Enter name of a personality: ")
     try:
-        pass
+        results = wikipedia.search(search_query, results = 3)
+        if len(results) == 0, return None, None
+
+        print("Select a name from the following list")
+
+        for i, result in enumerate(results):
+            print(f"{i+1}, {result}")
+
+        choice = 0
+        while choice < 1 or choice > len(results):
+            choice = int(input("Select the number of the desired name: ")
+            if choice < 1 or choice > len(results):
+                print("That number is invalid, select again")
+        return get_Wikiepedia_page_thumbnail_url
+
         # TODO (and remove the pass statement above)
     except Exception as e:
         print(f"Error: Unable to find image for the given name: {e}")
